@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Example') {
+        stage('Docker login') {
             steps {
-                withCredentials([string(credentialsId: 'dockerl', variable: 'DOCKERL')]) {
-                    // Your code here, DOCKERL variable can be used which contains the secret text of 'dockerl' credential ID.
-                    echo "The secret text is ${DOCKERL}"
+                withCredentials([usernamePassword(credentialsId: 'dockerl', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD} manusmtp"
                 }
             }
         }
+        // Additional stages here...
     }
 }
