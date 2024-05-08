@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{ 
-              example_creds = credentials('dockerL')
+              dockerL = credentials('dockerL')
     }
     stages {
         stage('Docker login') {
