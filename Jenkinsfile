@@ -1,15 +1,14 @@
 pipeline {
     agent any
-    environment{ 
-              dockerL = credentials('dockerL')
-    }
     stages {
-        stage('Docker login') {
-            steps {
-                
-                    sh('docker login -u $dockerL_USR -p $dockerL_PSW')
-            }
+          stage('Docker login') {
+                                        steps {
+                                            withCredentials([file(credentialsId: 'dockerL', variable: uname)]) {
+                                                sh ''
+                                                }
+                                           }
+        
         }
-        // Additional stages here...
     }
+
 }
