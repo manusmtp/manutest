@@ -1,16 +1,16 @@
 pipeline {
     agent any
 
-    parameters {
-        choice(name: 'PLATFORM_FILTER', choices: ['all', 'linux', 'windows', 'mac'], description: 'Run on specific platform')
-    } 
+      string(name: 'SERVERS', defaultValue: '192.0.2.0,192.0.2.1', description: 'Enter the IP addresses of the servers, separated by commas')
 
 stages{
-    stage('var output'){
-            steps {
-                echo "choice chosed by user :: ${params.PLATFORM_FILTER}"
-            }
+    stage('create the inventory '){
+            writeFile file: 'inventory.ini', text: """
+                [webservers]
+                ${params.SERVERS}
+            """
     }
+  }
 } 
-}
+
         
