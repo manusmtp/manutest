@@ -5,12 +5,14 @@ pipeline {
 }
 stages{
     stage('create the inventory '){
+        steps{
         script{
             writeFile file: 'inventory.ini', text: """
                 [webservers]
                 ${params.SERVERS}
             """
         }
+    }
     }
   }
 } 
