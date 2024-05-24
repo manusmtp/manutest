@@ -8,7 +8,7 @@ pipeline {
 stages{
     stage('var output'){
             steps {
-                echo "choice chosed by user :: ${params.choice}"
+                echo "choice chosed by user :: ${params.PLATFORM_FILTER}"
             }
     }
 } 
