@@ -1,18 +1,16 @@
 pipeline {
     agent any
-         stages{
-            stage('1stage'){
-                input{
-                    message "this is form"
-                 parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
+
+    parameters {
+        choice(name: 'PLATFORM_FILTER', choices: ['all', 'linux', 'windows', 'mac'], description: 'Run on specific platform')
+    } 
+
+stages{
+    stage('var output'){
+            steps {
+                echo "choice chosed by user :: ${params.choice}"
             }
-        steps {
-                echo "Hello, ${PERSON}, nice to meet you."
-            }
-        }
     }
-        
+} 
 }
         
