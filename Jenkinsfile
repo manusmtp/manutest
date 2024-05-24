@@ -21,8 +21,8 @@ stages{
   stage('Run Ansible Playbook') {
             steps {
                 // Run your Ansible playbook
-                //sh "sudo ansible-playbook -i inventory.ini play1.yml "
-               sh "id"
+                sh "ansible-playbook -i inventory.ini play1.yml "
+             
             }
         }
 }
