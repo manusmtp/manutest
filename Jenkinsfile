@@ -19,7 +19,7 @@ stages{
   stage('Run Ansible Playbook') {
             steps {
                 // Run your Ansible playbook
-                sh 'ansible-playbook -i inventory.ini your-playbook.yml'
+                sh 'ansible-playbook -i inventory.ini play1.yml'
             }
         }
 }
