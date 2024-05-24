@@ -1,14 +1,17 @@
 pipeline {
     agent any
-    stages {
-          stage('Docker login') {
-                                        steps {
-                                            withCredentials([usernamePassword(credentialsId: 'dockerL', Username: uname , Password: passw )]) {
-                                                sh 'docker login -u $uname -p $passw' 
-                                                }
-                                           }
-        
+         stages{
+            stage('1stage'){
+                input{
+                 parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+        steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
         }
     }
-
+        
 }
+        
