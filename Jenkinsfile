@@ -3,7 +3,7 @@ pipeline {
     parameters{
       string(name: 'SERVERS', defaultValue: '192.0.2.0,192.0.2.1', description: 'Enter the IP addresses of the servers, separated by commas')
       text(name: 'username', description:'Enter the username for the server')
-      password(name: 'pass1',descriotion: 'Enter password')
+      password(name: 'pass1', description: 'Enter password')
 }
 stages{
     stage('create the inventory '){
@@ -21,7 +21,7 @@ stages{
   stage('Run Ansible Playbook') {
             steps {
                 // Run your Ansible playbook
-                sh "ansible-playbook -i inventory.ini play1.yml -u ${params.username}"
+                sh "sudo ansible-playbook -i inventory.ini play1.yml -u ${params.username}"
             }
         }
 }
