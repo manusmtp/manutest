@@ -1,14 +1,14 @@
-pipeline {
-    agent any
-    stages {
-          stage('Docker login') {
-                                        steps {
-                                            withCredentials([usernamePassword(credentialsId: 'dockerL', Username: uname , Password: passw )]) {
-                                                sh 'docker login -u $uname -p $passw' 
-                                                }
-                                           }
-        
+pipeline{
+   agent any
+   stages{
+        stage('ansible stage'){
+            steps{
+                script{
+                    ansiblePlaybook(credentialsId: 'mcred', inventory: 'inventory.txt', playbook: 'aplay.yml')
+                }
+            }
+                 
         }
-    }
+   }
 
 }
