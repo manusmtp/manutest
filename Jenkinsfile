@@ -4,7 +4,7 @@ pipeline{
         stage('ansible stage'){
             steps{
                 script{
-                    ansiblePlaybook(credentialsId: 'mcred', inventory: 'inventory.txt', playbook: 'play1.yml')
+                    ansiblePlaybook(credentialsId: 'mcred', inventory: 'inventory.txt', playbook: 'aplay.yaml')
                 }
             }
                  
