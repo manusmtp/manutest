@@ -4,3 +4,8 @@
   tasks: 
   - name: just to check
     shell: cat /etc/os-release
+    register: comm_output
+
+  
+  - debug: 
+       msg: "{{ comm_output.stdout  }}"
